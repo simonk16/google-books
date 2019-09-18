@@ -16,6 +16,7 @@ module.exports = (app) => {
 
                 db.create(newBook)
                     .then((dbBook) => {
+                        console.log("hello")
                         res.json(dbBook)
                     })
                     .catch((err) => {
