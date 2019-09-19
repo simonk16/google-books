@@ -32,6 +32,16 @@ class Books extends React.Component {
         })
     }
 
+    componentDidMount = () => {
+        API.getBooks()
+        .then(res => {
+            this.setState({books: res.data})
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
     handleChange = e => {
         this.setState({value: e.target.value})
     }
