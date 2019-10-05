@@ -32,15 +32,7 @@ class Books extends React.Component {
         })
     }
 
-    componentDidMount = () => {
-        API.getBooks()
-        .then(res => {
-            this.setState({books: res.data})
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }
+    
 
     handleChange = e => {
         this.setState({value: e.target.value})
@@ -49,7 +41,12 @@ class Books extends React.Component {
     render () {
         return (
             <div className="container" style={style.bookSearch}>Search Books
-                <div className="resultsHere">{this.state.books}</div>
+                <div className="resultsHere"></div>
+                <ul>
+                {this.state.books.map(book => {
+                    return <li>{book.title}</li>
+                })}
+                </ul>
                 {this.state.value}
                 <hr></hr>
                 <input type="text" name="userBook" value={this.state.value} onChange={this.handleChange}></input>
